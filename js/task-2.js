@@ -27,16 +27,11 @@ const images = [
 
 const galery = document.querySelector('.gallery');
 
-images.map((image) => {
-  const item = document.createElement('li');
-  const newImage = document.createElement('img');
+const markup = images
+  .map(
+    (image) =>
+      `<li class='item-gallery'><img src=${image.url} alt=${image.alt} class='nature'/></li>`
+  )
+  .join('');
 
-  item.classList = 'item-gallery';
-
-  newImage.src = image.url;
-  newImage.alt = image.alt;
-  newImage.className = 'nature';
-
-  galery !== null && galery.append(item);
-  item.append(newImage);
-});
+galery.insertAdjacentHTML('beforeend', markup);

@@ -24,24 +24,15 @@ const createBoxes = (amount) => {
 
   allBoxInBoxes.length > 0 && destroyBoxes();
 
+  let divStr = '';
   for (let i = 1; i <= amount; i++) {
-    count += 10;
-
-    const div = document.createElement('div');
     const color = getRandomHexColor();
 
-    div.className = 'box';
-    if (i === 1) {
-      div.style.width = `30px`;
-      div.style.height = `30px`;
-    }
-    div.style.width = `${count}px`;
-    div.style.height = `${count}px`;
-    div.style.backgroundColor = color;
-
-    boxes.append(div);
+    divStr += `<div class='box'  style="width: ${count}px; height: ${count}px; background-color: ${color}"></div>`;
+    count += 10;
   }
   input.value = '';
+  boxes.insertAdjacentHTML('beforeend', divStr);
   boxes.style.backgroundColor = '#f0f0f7';
 };
 const destroyBoxes = () => {
